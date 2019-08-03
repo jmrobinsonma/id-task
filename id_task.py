@@ -11,9 +11,7 @@ with open('data (1).json', 'r') as f:
 	data_list = json.load(f)
 
 for nested_dict in data_list:
-	for key in nested_dict:
-		if "id" in key:
-			id_list.append(nested_dict['id'])
+	id_list.append(nested_dict['id'])
 
 csv_writer.writerow(id_list)
 csv_file.close()
