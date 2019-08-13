@@ -12,14 +12,11 @@ except Exception as err:
 	sys.exit()
 
 csv_filename = 'id_task.csv'
-id_list = []
 
 csv_file = open(csv_filename, 'w')
 csv_writer = csv.writer(csv_file)
 
-
-for nested_dict in data_list:
-	id_list.append(nested_dict['id'])
+id_list = [key['id'] for key in data_list]
 
 csv_writer.writerow(id_list)
 
