@@ -25,9 +25,9 @@ def id_parser(in_file, out_file):
 	csv_file = open(out_file, 'w')
 	csv_writer = csv.writer(csv_file)
 
-	id_list = [key['id'] for key in data_list]
+	id_generator = tuple((key['id'] for key in data_list))
 
-	csv_writer.writerow(id_list)
+	csv_writer.writerow(id_generator)
 	csv_file.close()
 
 	return print(f"\nThe data was saved to {out_file}")
