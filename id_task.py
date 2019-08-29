@@ -4,10 +4,15 @@ import sys
 import argparse
 
 
-parser = argparse.ArgumentParser(description='This function will copy all id numbers\
-		 from a .json input file which will be stored in a .csv file.')
-parser.add_argument('in_file', type=str, help='enter an existing .json file')
-parser.add_argument('out_file', type=str,  help='enter a name to create or overwrite a file (file_name.csv)')
+parser = argparse.ArgumentParser(description='This function will copy all id numbers from an existing\
+		user-defined .json input file.\
+		and the results will be stored in a user-defined .csv file.')
+parser.add_argument('in_file', type=str, help='enter the path to the existing .json file')
+parser.add_argument('out_file', type=str,  help='enter a name to create or overwrite a file (<user_file_name>.csv)')
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-q','--quiet',action='store_true')
+group.add_argument('-v','--verbose',action='store_true')
+
 args = parser.parse_args()
 
 def id_extractor(in_file, out_file):
@@ -33,7 +38,8 @@ def id_extractor(in_file, out_file):
 	csv_file.close()
 	json_file.close()
 	
-	return print(f"\nThe data was saved to {out_file}")
+	if args.verbose:
+		return print(f"\nThe data was saved to {out_file}")
 	 
 
 id_extractor(args.in_file, args.out_file)
