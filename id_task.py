@@ -28,15 +28,12 @@ def id_extractor(in_file, out_file):
 			-Please check to make sure there are no spelling errors")
 		sys.exit()
 
-	csv_file = open(out_file, 'w')
-	csv_writer = csv.writer(csv_file)
+	with open(out_file, 'w') as csv_file:
+		csv_writer = csv.writer(csv_file)
 
 	extractor = tuple((key['id'] for key in data_list))
 
 	csv_writer.writerow(extractor)
-	
-	csv_file.close()
-	json_file.close()
 	
 	if args.verbose:
 		return print(f"\nThe data was saved to {out_file}")
