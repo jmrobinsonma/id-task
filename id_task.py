@@ -19,12 +19,12 @@ def id_extractor(in_file, out_file):
 	try:
 		with open(in_file, 'r') as json_file:
 			data_list = json.load(json_file)
-			with open(out_file, 'w', newline='') as csv_file:
-				csv_writer = csv.writer(csv_file)
-				csv_writer.writerow(['ID Numbers'])
-				extracted_ids = tuple((key['id'] for key in data_list))
-				for i in extracted_ids:
-					csv_writer.writerow([i])
+		with open(out_file, 'w', newline='') as csv_file:
+			csv_writer = csv.writer(csv_file)
+			csv_writer.writerow(['ID Numbers'])
+			extracted_ids = tuple((key['id'] for key in data_list))
+			for i in extracted_ids:
+				csv_writer.writerow([i])
 
 	except Exception as err:
 		print(f"Sorry, there was an error while loading the input file:\
